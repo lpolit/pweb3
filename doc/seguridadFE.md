@@ -144,12 +144,10 @@ console.log(import.meta.env.VITE_API_URL);
 ### Bibliografía
 
 Documentación Oficial y Artículos
-OWASP XSS Prevention Cheat Sheet
-🔗 https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
-Vue.js Security Best Practices
-🔗 https://vuejs.org/guide/best-practices/security.html
-Autenticación con JWT en Vue.js
-🔗 https://auth0.com/blog/vue-authentication-tutorial/
-Validación en formularios con VeeValidate
-🔗 https://vee-validate.logaretm.com/v4/
+| # | Tema | Fuentes |
+| -- | ----------- | ------------ |
+| 1 | OWASP XSS Prevention Cheat Sheet|https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html| 
+| 2 | Vue.js Security Best Practices| https://vuejs.org/guide/best-practices/security.html| 
+| 3 | Autenticación con JWT en Vue.js| https://auth0.com/blog/vue-authentication-tutorial/| 
+| 4 | Validación en formularios con VeeValidate| https://vee-validate.logaretm.com/v4/| 
 

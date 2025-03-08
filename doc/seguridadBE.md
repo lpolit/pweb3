@@ -120,31 +120,19 @@ const hashedPassword = await bcrypt.hash(password, 10);
 
 #### Bibliografia
 Documentación Oficial
-OWASP Top 10: Principales amenazas de seguridad web
-🔗 https://owasp.org/www-project-top-ten/
-Documentación de JSON Web Tokens (JWT)
-🔗 https://jwt.io/introduction/
-Middleware Helmet.js para seguridad en Express
-🔗 https://helmetjs.github.io/
-Express.js Security Best Practices
-🔗 https://expressjs.com/en/advanced/best-practice-security.html
-Rate Limiting en APIs con Express
-🔗 https://www.npmjs.com/package/express-rate-limit
-Validación y sanitización de datos en Express con Express-Validator
-🔗 https://express-validator.github.io/docs/
-OAuth 2.0 y OpenID Connect: Autenticación Segura
-🔗 https://oauth.net/2/
-🔗 https://openid.net/connect/
-Artículos y Recursos en Línea
-Prevención de SQL Injection con ORM en Node.js (Sequelize y Mongoose)
-🔗 https://sequelize.org/docs/v6/core-concepts/raw-queries/#parameter-binding
-🔗 https://mongoosejs.com/docs/queries.html
-XSS Prevention Cheat Sheet (OWASP)
-🔗 https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
-Rate Limiting y Protección contra ataques de fuerza bruta en Node.js
-🔗 https://blog.logrocket.com/rate-limiting-node-js/
-Configuración de HTTPS y TLS en Express con Let's Encrypt
-🔗 https://letsencrypt.org/getting-started/
-Seguridad en APIs RESTful con Express y JWT
-🔗 https://www.digitalocean.com/community/tutorials/nodejs-jwt-expressjs
+| # | Tema | Fuentes |
+| -- | ----------- | ------------ |
+| 1 | Principales amenazas de seguridad web | https://owasp.org/www-project-top-ten/ |
+| 2 | Documentación de JSON Web Tokens (JWT) | https://jwt.io/introduction/ |
+| 3 | Middleware Helmet.js para seguridad en Express | https://helmetjs.github.io/|
+| 4 | Express.js Security Best Practices|https://expressjs.com/en/advanced/best-practice-security.html| 
+| 5 | Rate Limiting en APIs con Express | https://www.npmjs.com/package/express-rate-limit|
+| 6 | Validación y sanitización de datos en Express con Express-Validator| https://express-validator.github.io/docs/| 
+| 7 | OAuth 2.0 y OpenID Connect: Autenticación Segura| https://oauth.net/2/  https://openid.net/connect/| 
+| 8 | Prevención de SQL Injection con ORM en Node.js (Sequelize y Mongoose)| https://sequelize.org/docs/v6/core-concepts/raw-queries/
+| 9 | parameter-binding | https://mongoosejs.com/docs/queries.html| 
+| 10 | XSS Prevention Cheat Sheet (OWASP) | https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
+| 11 | Rate Limiting y Protección contra ataques de fuerza bruta en Node.js| https://blog.logrocket.com/rate-limiting-node-js| 
+| 12 | Configuración de HTTPS y TLS en Express con Let's Encrypt| https://letsencrypt.org/getting-started/| 
+| 13 | Seguridad en APIs RESTful con Express y JWT | https://www.digitalocean.com/community/tutorials/nodejs-jwt-expressjs
 

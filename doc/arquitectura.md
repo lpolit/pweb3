@@ -75,18 +75,10 @@ Patterns for Distributed Systems (Microsoft Azure)
 https://learn.microsoft.com/en-us/azure/architecture/patterns/
 
 #### Documentación Oficial
-Express.js - Documentación Oficial
-https://expressjs.com/
-
-Vue.js - Documentación Oficial
-https://vuejs.org/
-
-Node.js - Documentación Oficial
-https://nodejs.org/en/docs/
-
-REST API Design Guide (Microsoft)
-https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design
-
-GraphQL - Documentación Oficial
-https://graphql.org/
+Documentación Oficial y Artículos
+| # | Tema | Fuentes |
+| -- | ----------- | ------------ |
+| 1 | Express.js - Documentación Oficial | https://expressjs.com/ |
+| 3 | Node.js - Documentación Oficial | https://nodejs.org/en/docs/ |
+| 4 | REST API Design Guide (Microsoft)|https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design |
 
