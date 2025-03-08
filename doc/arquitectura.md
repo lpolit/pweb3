@@ -57,8 +57,8 @@ Uso de Redis Pub/Sub o RabbitMQ para comunicación entre microservicios
 Aplicación de WebSockets para notificaciones en tiempo real
 
 #### BIBLIOGRAFIA: 
-Microservices vs. Monolith: Pros and Cons (Martin Fowler Blog)
-https://martinfowler.com/articles/microservices.html
+Comparación entre la arquitectura monolítica y la arquitectura de microservicios 
+https://www.atlassian.com/es/microservices/microservices-architecture/microservices-vs-monolith
 
 Middleware in Express.js (MDN Web Docs)
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/
