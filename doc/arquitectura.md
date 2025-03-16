@@ -14,19 +14,6 @@ Implementación de microservicios con Express.js
 Comunicación entre microservicios (REST, gRPC, Mensajería con Kafka o RabbitMQ)
 Despliegue en contenedores con Docker y Kubernetes
 
-#### Patrones de Diseño en Aplicaciones Web
-🔹 MVC (Modelo-Vista-Controlador)
-Definición y ventajas en desarrollo web
-Implementación en Express.js con controladores y modelos separados
-Aplicación en Vue.js (Componentes, Store, Rutas)
-🔹 MVVM (Modelo-Vista-ViewModel)
-Enfoque en frontend con Vue.js (Binding de datos, Vuex/Pinia como ViewModel)
-🔹 Clean Architecture
-Principios de separación de capas:
-Capa de Presentación (Frontend - Vue.js)
-Capa de Aplicación (Lógica de negocio - Express.js)
-Capa de Infraestructura (Base de datos, APIs externas, autenticación)
-Implementación en proyectos reales
 
 #### Separación de Responsabilidades en Backend y Frontend
 🔹 Backend (Express.js)

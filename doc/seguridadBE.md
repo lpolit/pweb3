@@ -4,9 +4,7 @@
 Riesgos y amenazas en aplicaciones web
 Impacto de ataques en la integridad, confidencialidad y disponibilidad de los datos
 OWASP Top 10: principales vulnerabilidades en aplicaciones web
-🔹 Modelo de seguridad en aplicaciones web
-Seguridad en capas (defensa en profundidad)
-Seguridad en el desarrollo seguro (DevSecOps)
+
 
 #### Implementación de JWT (JSON Web Tokens) para Sesiones Seguras
 🔹 Concepto de JWT y su uso en autenticación
