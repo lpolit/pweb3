@@ -14,7 +14,6 @@ Ventajas del uso de JWT en aplicaciones web
 🔹 Implementación en Express.js
 Generación de tokens con jsonwebtoken
 Verificación y validación de JWT en middleware
-Uso de Refresh Tokens para extender sesiones
 Seguridad en almacenamiento de tokens (HTTP-only cookies vs. LocalStorage)
 
 #### Protección de Rutas con Roles y Permisos (RBAC - Role-Based Access Control)
@@ -39,21 +38,6 @@ const authorizeRole = (roles) => {
 };
 ```
 
-#### Prevención de SQL Injection con ORM
-🔹 Concepto de SQL Injection y su impacto
-Explicación del ataque y ejemplos
-Riesgos en bases de datos relacionales
-🔹 Protección en Express.js con ORM/Query Builder
-Uso de Sequelize (ORM para MySQL/PostgreSQL)
-Consultas parametrizadas vs. consultas concatenadas
-Validación y sanitización de entradas de usuario
-Implementación de ORM seguro en Express
-Ejemplo con Sequelize (consulta segura):
-```js
-const user = await User.findOne({
-    where: { email: req.body.email }
-});
-```
 
 #### Protección contra XSS (Cross-Site Scripting) en Respuestas de la API
 🔹 Concepto de XSS y sus tipos

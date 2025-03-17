@@ -50,3 +50,43 @@ OWASP Top 10 - Principales Vulnerabilidades en Aplicaciones Web (2021)
     Un atacante hace que el servidor realice solicitudes no autorizadas.
     Ejemplo: Un atacante usa una entrada mal validada para acceder a recursos internos.
     Solución: Restringir solicitudes a direcciones internas y validar URLs de entrada.
+
+
+
+#### Implementación de JWT en Express.js
+
+
+4. Probar el Servidor con Postman o cURL
+
+#### Autenticarse y obtener un token
+Realiza una petición POST a http://localhost:5000/login con el cuerpo:
+
+```js
+{
+  "username": "admin",
+  "password": "1234"
+}
+
+Respuesta esperada:
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsIn..."
+}
+```
+
+#### Acceder a la ruta protegida
+
+Realiza una petición GET a http://localhost:5000/profile con el token en el header:
+```js
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsIn...
+Respuesta esperada:
+
+
+{
+  "message": "Perfil autorizado",
+  "user": {
+    "id": 1,
+    "username": "admin"
+  }
+}
+```
