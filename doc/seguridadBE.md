@@ -5,6 +5,58 @@ Riesgos y amenazas en aplicaciones web
 Impacto de ataques en la integridad, confidencialidad y disponibilidad de los datos
 OWASP Top 10: principales vulnerabilidades en aplicaciones web
 
+#### INFORMACION COMPLEMENTARIA
+
+OWASP Top 10 - Principales Vulnerabilidades en Aplicaciones Web (2021)
+1. Broken Access Control (Control de Acceso Roto)
+    Permite que los usuarios accedan a recursos o realicen acciones fuera de sus permisos.
+    Ejemplo: Un usuario normal accede a un panel de administrador modificando la URL.
+    Solución: Implementar controles de acceso estrictos en el backend y validar roles correctamente.
+
+2. Cryptographic Failures (Fallas Criptográficas)
+    Uso incorrecto o insuficiente de cifrado, exponiendo datos sensibles.
+    Ejemplo: Transmisión de contraseñas en texto plano o almacenamiento sin cifrado.
+    Solución: Usar TLS para comunicaciones seguras y cifrar datos sensibles en reposo y en tránsito.
+
+3. Injection (Inyección de Código)
+    Un atacante inyecta código malicioso en una consulta o script.
+    Ejemplo: SQL Injection, XSS (Cross-Site Scripting), LDAP Injection.
+    Solución: Usar consultas parametrizadas y sanitizar entradas de usuario.
+
+4. Insecure Design (Diseño Inseguro)
+    Falta de enfoque en la seguridad desde el diseño de la aplicación.
+    Ejemplo: No definir requisitos de seguridad en las primeras fases del desarrollo.
+    Solución: Implementar principios de Security by Design y modelos de amenazas.
+
+5. Security Misconfiguration (Configuración Incorrecta de Seguridad)
+    Uso de configuraciones predeterminadas o mal gestionadas.
+    Ejemplo: Servidor con directorios expuestos, errores detallados visibles al usuario.
+    Solución: Deshabilitar configuraciones innecesarias, restringir accesos y aplicar parches.
+
+6. Vulnerable and Outdated Components (Componentes Vulnerables y Desactualizados)
+    Uso de bibliotecas, frameworks o sistemas sin actualizar con vulnerabilidades conocidas.
+    Ejemplo: Uso de una versión antigua de Log4j con vulnerabilidades críticas.
+    Solución: Mantener dependencias actualizadas y aplicar parches de seguridad.
+
+7. Identification and Authentication Failures (Fallos en Identificación y Autenticación)
+    Fallos en mecanismos de autenticación y gestión de sesiones.
+    Ejemplo: Uso de contraseñas débiles, tokens inseguros o sesión sin expiración.
+    Solución: Implementar MFA, hashes seguros (bcrypt, Argon2) y limitar intentos de login.
+
+8. Software and Data Integrity Failures (Fallas de Integridad en Software y Datos)
+    Uso de software sin verificar su autenticidad o sin proteger su integridad.
+    Ejemplo: Descarga de actualizaciones no firmadas, vulnerabilidades en CI/CD.
+    Solución: Usar firmas digitales, verificar fuentes de software y restringir acceso a pipelines.
+
+9. Security Logging and Monitoring Failures (Fallos en Registro y Monitoreo de Seguridad)
+    Falta de logs y monitoreo que permitan detectar ataques o actividad sospechosa.
+    Ejemplo: No registrar intentos fallidos de autenticación o accesos sospechosos.
+    Solución: Implementar registros detallados, alertas y auditorías periódicas.
+
+10. Server-Side Request Forgery (SSRF – Falsificación de Petición del Lado del Servidor)
+    Un atacante hace que el servidor realice solicitudes no autorizadas.
+    Ejemplo: Un atacante usa una entrada mal validada para acceder a recursos internos.
+    Solución: Restringir solicitudes a direcciones internas y validar URLs de entrada.
 
 #### Implementación de JWT (JSON Web Tokens) para Sesiones Seguras
 🔹 Concepto de JWT y su uso en autenticación
@@ -14,29 +66,10 @@ Ventajas del uso de JWT en aplicaciones web
 🔹 Implementación en Express.js
 Generación de tokens con jsonwebtoken
 Verificación y validación de JWT en middleware
-Seguridad en almacenamiento de tokens (HTTP-only cookies vs. LocalStorage)
 
 #### Protección de Rutas con Roles y Permisos (RBAC - Role-Based Access Control)
 🔹 Concepto de RBAC y su aplicación en seguridad
 Diferencia entre ACL (Access Control List) y RBAC
-Definición de roles y permisos en Express.js
-🔹 Implementación en Node.js con Express
-Middleware para validar roles y permisos
-Restricción de accesos a rutas específicas
-Integración con JWT para gestionar permisos
-Ejemplo de Middleware RBAC en Express.js:
-
-
-```js
-const authorizeRole = (roles) => {
-    return (req, res, next) => {
-        if (!roles.includes(req.user.role)) {
-            return res.status(403).json({ message: "Acceso denegado" });
-        }
-        next();
-    };
-};
-```
 
 
 #### Protección contra XSS (Cross-Site Scripting) en Respuestas de la API
@@ -48,12 +81,7 @@ XSS basado en DOM (manipulación del DOM en el frontend)
 Sanitización de datos de entrada con DOMPurify o express-validator
 Configuración de Content Security Policy (CSP)
 Escapado de salida en respuestas JSON
-Ejemplo de protección con helmet.js:
 
-```js
-const helmet = require('helmet');
-app.use(helmet());
-```
 
 #### Configuración de Cabeceras HTTP Seguras
 🔹 Importancia de las cabeceras HTTP en seguridad
@@ -63,42 +91,75 @@ Strict-Transport-Security (HSTS): Obliga el uso de HTTPS
 Referrer-Policy: Controla la información compartida en encabezados Referer
 🔹 Configuración con Helmet.js en Express
 
-```js
-app.use(helmet({
-    contentSecurityPolicy: false, // Personalización si es necesario
-}));
-```
 
 #### Buenas Prácticas de Seguridad en APIs REST
-🔹 Autenticación y autorización
-Implementar OAuth 2.0 en servicios externos
-Uso de Scopes en APIs protegidas
-🔹 Limitación de acceso y control de tráfico
-Implementación de Rate Limiting con express-rate-limit
-Protección contra ataques de fuerza bruta
-Ejemplo de Rate Limiting en Express:
+1- Usa Autenticación Segura (JWT, OAuth, API Keys)
+    JWT para autenticación sin estado
+    JSON Web Tokens (JWT) es una forma segura y escalable de autenticar usuarios sin necesidad de sesiones en el servidor.
+
+2-Usa HTTPS para Cifrar Datos
+
+Siempre usa HTTPS para proteger los datos en tránsito con TLS.
+
+forza HTTPS con middleware:
 
 ```js
-const rateLimit = require('express-rate-limit');
-const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutos
-    max: 100 // Máximo 100 peticiones por IP
+app.use((req, res, next) => {
+  if (!req.secure) {
+    return res.redirect('https://' + req.headers.host + req.url);
+  }
+  next();
 });
-app.use(limiter);
 ```
 
-🔹 Registro y monitoreo de actividad
-Logging de accesos con Winston o Morgan
-Monitoreo con herramientas como Prometheus y Grafana
-🔹 Uso de HTTPS y encriptación de datos sensibles
-Implementación de SSL/TLS
-Hashing seguro de contraseñas con bcrypt
-Ejemplo de Hashing con Bcrypt:
-javascript
-CopiarEditar
-const bcrypt = require('bcrypt');
-const hashedPassword = await bcrypt.hash(password, 10);
+ 3- Implementa Autorización con RBAC o ACL
+    Ejemplo en  el repo [backend_con_rbac](/proyectos/backend_con_rbac/server.js)
+ 
+ 4- Limita Peticiones para Prevenir Ataques de Fuerza Bruta
 
+```SH
+    npm install express-rate-limit
+```
+```js
+    const rateLimit = require('express-rate-limit');
+
+    const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutos
+    max: 100, // Máximo 100 peticiones por IP
+    message: "Demasiadas solicitudes, intenta más tarde",
+    });
+
+    app.use('/login', limiter);
+```
+
+5- Implementa CORS Seguro
+
+```js
+const cors = require('cors');
+
+const corsOptions = {
+  origin: ['https://tu-sitio.com'], // Dominios permitidos
+  methods: 'GET,POST,PUT,DELETE',
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
+```
+
+6- Protege Contra Cross-Site Scripting (XSS)
+
+7- Usa Headers de Seguridad con Helmet
+
+8- Valida y Sanitiza JSON de Entradas
+
+9- Registra Logs y Monitorea Actividad
+```sh
+npm install morgan
+```
+```js
+const morgan = require('morgan');
+app.use(morgan('combined')); // Registra todas las peticiones
+```
 
 #### Bibliografia
 Documentación Oficial

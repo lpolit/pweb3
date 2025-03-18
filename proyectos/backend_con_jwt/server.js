@@ -19,28 +19,10 @@ app.get("/", (req, res) => {
 
 
 app.get("/info", (req, res) => {
-  const umTitulo = "Meu página criada desde Express";
+  const umTitulo = "Pagina de Info sin proteccion";
   res.json({ titulo: umTitulo });
 });
 
-app.get("/nuevo", (req, res) => {
-  const umTitulo = "Este es mi nuevo endpoint";
-  res.json({ titulo: umTitulo });
-});
-
-
-app.post("/enviar", (req, res) => {
-  const { nombre, mensaje } = req.body;
-
-  if (!nombre || !mensaje) {
-    return res.status(400).json({ error: "Faltan datos en la solicitud" });
-  }
-
-  res.json({
-    mensaje: "Los Datos enviados al Backend fueron: ",
-    datos: { nombre, mensaje }
-  });
-});
 
 ////////////////// USO DE JWT ///////////////////////////
 // Ruta de login (genera el token)
