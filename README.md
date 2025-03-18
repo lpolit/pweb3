@@ -24,8 +24,8 @@ Conocer y saber implementar una variada gama de posibilidades para poner en prod
 
 | Fecha | Entregas |
 | -- | -- |
-| Mitad del Cuatri | **Entrega 1: ** |
-| Final del Cuatri | **Entrega 2: ** |
+| Mitad del Cuatri | **Entrega 1: *BE (JWT + RBAC + Buenas Practicas)* |
+| Final del Cuatri | **Entrega 2: *BE (JWT + RBAC + Buenas Practicas) + FE + HTTPS + DEPLOY* |
 | Última Clase     | **Recuperatorios** y **Cierre** |
 
 ## Criterios de evaluación UNO para ambas materias

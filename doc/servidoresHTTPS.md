@@ -48,46 +48,11 @@ sudo certbot renew --dry-run
 ```
 🔹 Configuración manual en Nginx
 Editar la configuración del servidor en /etc/nginx/sites-available/default:
-nginx
-```sh
-server {
-    listen 443 ssl;
-    server_name tu-dominio.com;
-    ssl_certificate /etc/letsencrypt/live/tu-dominio.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/tu-dominio.com/privkey.pem;
-}
-```
-Reiniciar Nginx:
 
-```sh
-sudo systemctl restart nginx
-```
-#### Configuración de Proxy Reverso con Nginx y Express
+#### Configuración de Proxy Reverso con Express
 🔹 ¿Qué es un Proxy Reverso y por qué usarlo?
 Un proxy reverso gestiona el tráfico entrante y lo redirige a servidores internos.
 Beneficios: seguridad, balanceo de carga, compresión, caching.
-🔹 Ejemplo de configuración de proxy reverso con Nginx
-Archivo de configuración en /etc/nginx/sites-available/default:
-nginx
-```sh
-server {
-    listen 80;
-    server_name tu-dominio.com;
-    
-    location / {
-        proxy_pass http://localhost:3000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    }
-}
-```
-Habilitar y reiniciar Nginx:
-
-```sh
-sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
-sudo systemctl restart nginx
-```
 🔹 Configuración en Express.js para trabajar con proxy reverso
 ```js
 const express = require('express');

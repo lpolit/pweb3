@@ -1,18 +1,11 @@
-## Arquitectura Monolitica vs Microservicios
-    PPT 1.1
-
-## Principios de separacion en capas
-    PPT 1.2
-## Separacion de Responsabilidades
-    PPT 1.2
-### Backend
-### Frontend
-
-## Concepto de Middleware y usos
-    PPT 1.2
+## TEORIA 
+Presentar:
+[Monolito vs Microservicios](/presentaciones/1.1-Monolito%20vs%20Microservicios.pdf)
+[Division de responsabilidades y middlewares](/presentaciones/1.2-Separacion%20de%20Responsabilidades%20y%20Middlewares.pdf)
 
 
 ## PRACTICA:
-Mostrar el proyecto Monolitico, analizar los archivos.
-Que digan como quedarian los proyectos (que va en cada uno)
-mostrar el terminado (simple sin base)
+Revisar en conjunto el proyecto [Monolito](/proyectos/monolito/), analizar los archivos y decidir que corresponde a cada componente
+Mostrar como quedo terminado y dividido en 2 proyectos:
+    - [Frontend](/proyectos/frontend/)
+    - [Backend](/proyectos/backend/)

@@ -53,6 +53,20 @@ app.post("/enviar", (req, res) => {
   });
 });
 
+///// EJEMPLO DE COMO INVOCAR A LA BASE SI ESTA EN OTRO COMPONENTE /////
+// Obtener mensajes (Llama al servicio de base de datos)
+app.get("/mensajes", async (req, res) => {
+  try {
+    const response = await axios.get( "http://localhost:4000/mensajes");
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: "Error al obtener mensajes" });
+  }
+});
+
+
+
+
 app.listen(port, () => {
   console.log(`Servidor backend en http://localhost:${port}`);
 });
