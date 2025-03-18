@@ -13,7 +13,7 @@ async function getAllUsers() {
 }
 
 async function getUser(name) {
-  return await pessoas.findOne({ nombre: name });
+  return await usuarios.findOne({ nombre: name });
 }
 
 
