@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XSS Test</title>
+</head>
+<body>
+    <input type="text" id="userInput" placeholder="Escribe algo">
+    <button onclick="submitComment()">Enviar</button>
+    <div id="output"></div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.8/purify.min.js"></script>
+    <script>
+        function submitComment() {
+            const input = document.getElementById("userInput").value;
+            const cleanInput = DOMPurify.sanitize(input); // ✅ Limpia código malicioso
+            document.getElementById("output").textContent = "Comentario: " + cleanInput; // ✅ Seguro contra XSS
+        }
+      </script>
+</body>
+</html>

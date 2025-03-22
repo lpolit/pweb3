@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XSS Test</title>
+</head>
+<body>
+    <input type="text" id="userInput" placeholder="Escribe algo">
+    <button onclick="submitComment()">Enviar</button>
+    <div id="output"></div>
+
+    <script>
+        function submitComment() {
+            const input = document.getElementById("userInput").value;
+            document.getElementById("output").innerHTML = "Comentario: " + input; // 🚨 Vulnerable a XSS insertando <img src="x" onerror="alert('XSS funcionando!')">
+        }
+    </script>
+</body>
+</html>

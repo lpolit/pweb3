@@ -57,7 +57,7 @@ app.post("/enviar", (req, res) => {
 // Obtener mensajes (Llama al servicio de base de datos)
 app.get("/mensajes", async (req, res) => {
   try {
-    const response = await axios.get( "http://localhost:4000/mensajes");
+    const response = await axios.get("http://localhost:4000/mensajes");
     res.json(response.data);
   } catch (error) {
     res.status(500).json({ error: "Error al obtener mensajes" });
