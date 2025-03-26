@@ -38,7 +38,7 @@ app.post("/login", (req, res) => {
       expiresIn: "1h",
     });
 
-    res.json({ token });
+    res.json({ accessToken:token });
   } else {
     res.status(401).json({ message: "Credenciales incorrectas" });
   }
