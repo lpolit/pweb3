@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const jwt = require("jsonwebtoken");
-//const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
@@ -13,14 +12,14 @@ app.use(express.json()); // Middleware para recibir JSON
 
 
 app.get("/", (req, res) => {
-  const umTitulo = "Estoy en la raiz del backend";
-  res.json({ titulo: umTitulo });
+  const titulo = "Estoy en la raiz del backend";
+  res.json({ titulo: titulo });
 });
 
 
 app.get("/info", (req, res) => {
-  const umTitulo = "Pagina de Info sin proteccion";
-  res.json({ titulo: umTitulo });
+  const titulo = "Pagina de Info sin proteccion";
+  res.json({ titulo: titulo });
 });
 
 
@@ -48,7 +47,7 @@ app.post("/login", (req, res) => {
 const verifyToken = (req, res, next) => {
   const token = req.headers["authorization"];
   if (!token) return res.status(403).json({ message: "Token requerido" });
-
+  
   jwt.verify(token.split(" ")[1], SECRET_KEY, (err, decoded) => {
     if (err) return res.status(401).json({ message: "Token inválido" });
 

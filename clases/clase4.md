@@ -1,3 +1,13 @@
+## INSTALAR OPENSSL
+https://slproweb.com/products/Win32OpenSSL.html
+
+Descargar el instalador
+Instalar todo siguiente
+En variables de entorno, agregar la ruta /bin de la instalacion al path.
+
+
+
+
 ## TEORIA 
 Presentar:
 [SeguridadBE](/presentaciones/2.1-SeguridadBE.pdf) hasta finalizar el tema JWT
@@ -8,7 +18,7 @@ Presentar:
 
 - Con postman probar la validadicon de JWT usando los endpoints disponibles.
 
-## TEORIA
+## TEORIA 
 Presentar:
 [SeguridadBE](/presentaciones/2.1-SeguridadBE.pdf) continuando con RBAC
 

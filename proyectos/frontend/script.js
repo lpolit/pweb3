@@ -1,4 +1,4 @@
-  fetch("http://localhost:3000/")
+  fetch('https://localhost:3001/info')
    .then(response => response.json())
    .then(data => {
     document.getElementById("titulo").textContent = data.titulo;
