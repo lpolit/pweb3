@@ -6,24 +6,13 @@ Instalar todo siguiente
 En variables de entorno, agregar la ruta /bin de la instalacion al path.
 
 
-
-
 ## TEORIA 
 Presentar:
-[SeguridadBE](/presentaciones/2.1-SeguridadBE.pdf) hasta finalizar el tema JWT
+[SeguridadBE](/presentaciones/2.2-BuenasPracticas.pdf) 
 
 ## PRACTICA:
-- Mostrar como se aplica JWT en el proyecto  [Backend](/proyectos/backend_con_jwt/server.js),
+- Mostrar como se aplica cada buena practica en  [Backend](/proyectos/backend_buenas_practicas/server.js),
   Analizar el archivo server.js y contar como fuciona cada metodo.
 
-- Con postman probar la validadicon de JWT usando los endpoints disponibles.
+- Con postman probar cada uno de los casos en la coleccion backend_buenas_practicas
 
-## TEORIA 
-Presentar:
-[SeguridadBE](/presentaciones/2.1-SeguridadBE.pdf) continuando con RBAC
-
-## PRACTICA:
-- Mostrar como se aplica RBAC en el proyecto  [Backend](/proyectos/backend_con_rbac/server.js),
-  Analizar el archivo server.js y contar como fuciona cada metodo.
-
-- Con postman probar la validadicon de JWT usando los endpoints disponibles para cada perfil de usuario.

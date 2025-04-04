@@ -10,7 +10,9 @@ const SECRET_KEY = process.env.JWT_SECRET || "secretkey";
 const https = require('https');
 const http = require('http');
 const fs = require('fs');
-
+const path = require('path');
+const morgan = require('morgan');
+const rateLimit = require('express-rate-limit');
 
 // Base de datos simulada de usuarios
 const users = [
@@ -18,34 +20,6 @@ const users = [
   { id: 2, username: 'manager', password: "1234" , role: 'manager' },
   { id: 3, username: 'employee', password: "1234" , role: 'employee' }
 ];
-
-//IMPLEMENTACION DE CORS SEGURO
-const cors_options = {
-  origin: "http://127.0.0.1:8080", // Permite solo este origen
-  methods: "GET,POST,PUT,DELETE", // Métodos permitidos
-  allowedHeaders: "Content-Type,Authorization" // Headers permitidos
-}
-
-app.use(cors(cors_options));
-
-app.use(express.json()); // Middleware para recibir JSON
-
-
-// SANITIZAR 
-
-const {body, validatorResult} = require('express-validator')
-const sanitizeHtml = require ('sanitize-html')
-
-app.post('/sanitizado', body('comment').isString().trim().escape(), //valida y escapa entrada
-(req, res) => {
-  const errors = validatorResult(req);
-  if (errors.isEmpty()) return res.status(400).json({errors: errors.array()});
-
-  const safeComment = sanitizeHtml(req.body.comment); // Limpiar HTML peligroso
-  res.send({message: "Comentario Seguro", safeComment})
-})
-
-
 
 
 // Middleware para redirigir HTTP a HTTPS
@@ -55,6 +29,79 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+//IMPLEMENTACION DE CORS SEGURO
+const cors_options = {
+  origin: "http://127.0.0.1:8080", // Permite solo este origen
+  methods: "GET,POST,PUT,DELETE", // Métodos permitidos
+  allowedHeaders: "Content-Type,Authorization" // Headers permitidos
+}
+
+app.use(cors(cors_options));
+app.use(express.json()); // Middleware para recibir JSON
+
+
+///// LOGS EN ARCHIVO /////
+const accessLogStream = fs.createWriteStream(
+  path.join(__dirname, 'access.log'),
+  { flags: 'a' } // 'a' = append
+);
+
+//app.use(morgan('combined', { stream: accessLogStream }));
+
+////// LOGS EN CONSOLA //////
+//app.use(morgan('combined'))
+
+
+////////// SANITIZAR ////////////
+
+const {body, validationResult} = require('express-validator')
+const sanitizeHtml = require ('sanitize-html')
+
+app.post('/sanitizado', body('comment').isString().trim(), //verifica que comment sea un string, elimina espacios y caracteres peligrosos
+(req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) return res.status(400).json({errors: errors.array()});
+
+  const safeComment = sanitizeHtml(req.body.comment); // Limpiar HTML peligroso
+
+  res.send({message: "Comentario Seguro", safeComment})
+})
+
+app.post('/sinsanitizar', body('comment'),
+(req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) return res.status(400).json({errors: errors.array()});
+
+  const Comment = req.body.comment // Limpiar HTML peligroso
+  res.send({message: "Comentario Sin Filtro", Comment})
+})
+
+
+// VALIDAR CARACTERES A MANO
+app.post('/validarcaracteres', (req,res)=>{
+  const query = req.body.query;
+
+  if(!/^[a-zA-A0-9\s]+$/.test(query)){
+    return res.status(400).send("Entrada Invalida")
+  }
+
+  res.send({message: "Entrada Valida", query})
+})
+
+////////////  LIMITADOR  ////////////
+const limiter = rateLimit({
+  windowMs: 15*60*1000, // 15min
+  max: 3, // maximo 100 peticiones por IP
+  message: "Demasiadas solicitudes, intente mas tarde"
+})
+
+app.use('/limitado', limiter)
+
+app.get("/limitado", (req, res) => {
+  res.json({ titulo: "soy un endpoint limitado" });
+});
+
 
 
 // Middleware para verificar token
