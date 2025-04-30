@@ -47,8 +47,8 @@
     Clase 4  (09/04): Seguridad en Aplicaciones Web (Backend)
     Clase 5  (16/04): Seguridad en Aplicaciones Web (FrontEnd)
     Clase 6  (23/04): Seguridad en Aplicaciones Web (FrontEnd)
-    Clase 7  (30/04): Primera Entrega
-    Clase 8  (07/05): Administración de servidores HTTPS
+    Clase 7  (30/04): Seguridad en Aplicaciones Web (FrontEnd)
+    Clase 8  (07/05): Primera Entrega
     Clase 9  (14/05): Administración de servidores HTTPS
     Clase 10 (21/05): Despliegue avanzado
     Clase 11 (28/05): Despliegue avanzado

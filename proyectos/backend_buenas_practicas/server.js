@@ -24,20 +24,22 @@ const users = [
 
 // Middleware para redirigir HTTP a HTTPS
 app.use((req, res, next) => {
-  if (!req.secure && req.headers.host !== 'localhost:3000') {
+  if (!req.secure && req.headers.host == 'localhost:3000') {
     return res.redirect('https://' + req.headers.host + req.url);
   }
   next();
 });
 
-//IMPLEMENTACION DE CORS SEGURO
-const cors_options = {
-  origin: "http://127.0.0.1:8080", // Permite solo este origen
-  methods: "GET,POST,PUT,DELETE", // Métodos permitidos
-  allowedHeaders: "Content-Type,Authorization" // Headers permitidos
-}
 
-app.use(cors(cors_options));
+const cors_options = {
+  origin: "http://localhost:8080",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true, // Solo si usás cookies o headers de autenticación
+};
+
+app.use(cors(cors_options)); 
+
 app.use(express.json()); // Middleware para recibir JSON
 
 
@@ -50,7 +52,7 @@ const accessLogStream = fs.createWriteStream(
 //app.use(morgan('combined', { stream: accessLogStream }));
 
 ////// LOGS EN CONSOLA //////
-//app.use(morgan('combined'))
+app.use(morgan('combined'))
 
 
 ////////// SANITIZAR ////////////
@@ -92,7 +94,7 @@ app.post('/validarcaracteres', (req,res)=>{
 ////////////  LIMITADOR  ////////////
 const limiter = rateLimit({
   windowMs: 15*60*1000, // 15min
-  max: 3, // maximo 100 peticiones por IP
+  max: 200, // maximo 100 peticiones por IP
   message: "Demasiadas solicitudes, intente mas tarde"
 })
 

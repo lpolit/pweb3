@@ -1,0 +1,2 @@
+::1 - - [23/Apr/2025:21:49:43 +0000] "GET /__server_sent_events__ HTTP/1.1" 404 161 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36"
+::1 - - [23/Apr/2025:21:49:51 +0000] "GET /info HTTP/1.1" 200 45 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36"

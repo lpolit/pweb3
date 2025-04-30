@@ -15,8 +15,8 @@
     <script>
         function submitComment() {
             const input = document.getElementById("userInput").value;
-            const cleanInput = DOMPurify.sanitize(input); // ✅ Limpia código malicioso
-            document.getElementById("output").textContent = "Comentario: " + cleanInput; // ✅ Seguro contra XSS
+            //const cleanInput = DOMPurify.sanitize(input); // ✅ Limpia código malicioso
+            document.getElementById("output").textContent = "Comentario: " + input; // ✅ Seguro contra XSS
         }
       </script>
 </body>

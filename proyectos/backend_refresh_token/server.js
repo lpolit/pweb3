@@ -13,12 +13,7 @@ let refreshTokens = [];
 
 
 app.use(express.json()); // Middleware para recibir JSON
-app.use(
-  cors({
-    origin: "http://localhost:8080", // Cambia esto a tu frontend
-    credentials: true, // Para permitir cookies en las peticiones
-  })
-);
+app.use(cors());
 
 app.get("/", (req, res) => {
   const umTitulo = "Estoy en la raiz del backend";

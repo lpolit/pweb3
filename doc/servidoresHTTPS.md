@@ -1,13 +1,18 @@
-## Administración de Servidores HTTPS
-#### Instalación y Configuración de un Servidor HTTPS
-🔹 Concepto de HTTPS y su importancia
-Diferencias entre HTTP y HTTPS.
-Beneficios de HTTPS: cifrado, integridad de datos y autenticación.
-Funcionamiento del protocolo TLS/SSL en la seguridad web.
-🔹 Configuración básica de un servidor web con HTTPS
-Elección del servidor: Nginx, Apache, Caddy, Express.js.
-Configuración de HTTPS en Express.js con https de Node.js.
-Ejemplo de servidor HTTPS con Node.js y Express:
+### Introducción
+- ¿Qué es HTTPS y por qué es importante?
+- Diferencias entre HTTP y HTTPS.
+- Conceptos básicos de seguridad: TLS/SSL, certificados, cifrado.
+
+### ¿Cómo funciona HTTPS?
+- Handshake TLS (de forma simplificada).
+- Certificados digitales y autoridades certificadoras (CA).
+- Claves públicas y privadas.
+
+### Configurar un servidor HTTPS con Node.js y Express
+- Requisitos previos: certificado SSL y clave privada.
+- Uso de certificados autofirmados para pruebas.
+- Código ejemplo básico:
+
 
 ```js
 const https = require('https');
@@ -15,56 +20,46 @@ const fs = require('fs');
 const express = require('express');
 
 const app = express();
+
+app.get('/', (req, res) => {
+  res.send('Servidor HTTPS funcionando!');
+});
+
 const options = {
-  key: fs.readFileSync('privkey.pem'),
-  cert: fs.readFileSync('cert.pem')
+  key: fs.readFileSync('./cert/key.pem'),
+  cert: fs.readFileSync('./cert/cert.pem')
 };
 
-app.get('/', (req, res) => {
-  res.send('Servidor HTTPS activo');
-});
-
 https.createServer(options, app).listen(443, () => {
-  console.log('Servidor HTTPS en ejecución en el puerto 443');
-});
-```
-#### Implementación de Certificados SSL/TLS con Let's Encrypt
-🔹 ¿Qué es Let's Encrypt?
-Autoridad de certificación gratuita y automatizada.
-Facilita la implementación de HTTPS con certificados válidos.
-Integración con Certbot para automatizar la instalación y renovación.
-🔹 Generación e instalación de un certificado SSL con Certbot
-Pasos para configurar Let's Encrypt en Nginx:
-```sh
-Instalar Certbot en Linux:
-sudo apt update
-sudo apt install certbot python3-certbot-nginx
-
-Obtener un certificado para un dominio:
-sudo certbot --nginx -d tu-dominio.com -d www.tu-dominio.com
-
-Configurar la renovación automática:
-sudo certbot renew --dry-run
-```
-🔹 Configuración manual en Nginx
-Editar la configuración del servidor en /etc/nginx/sites-available/default:
-
-#### Configuración de Proxy Reverso con Express
-🔹 ¿Qué es un Proxy Reverso y por qué usarlo?
-Un proxy reverso gestiona el tráfico entrante y lo redirige a servidores internos.
-Beneficios: seguridad, balanceo de carga, compresión, caching.
-🔹 Configuración en Express.js para trabajar con proxy reverso
-```js
-const express = require('express');
-const app = express();
-
-app.set('trust proxy', true); // Reconocer el proxy reverso
-app.get('/', (req, res) => {
-  res.send(`Tu IP es: ${req.ip}`);
+  console.log('Servidor HTTPS corriendo en puerto 443');
 });
 
-app.listen(3000, () => console.log('Servidor corriendo en puerto 3000'));
 ```
+
+### Generar certificados autofirmados (para desarrollo)
+Comando con OpenSSL:
+
+```bash
+openssl req -nodes -new -x509 -keyout key.pem -out cert.pem
+```
+- Explicación de cada parámetro.
+- Ubicación segura de los certificados.
+
+### Uso de certificados válidos en producción
+- Let's Encrypt: cómo funciona y por qué es gratis.
+- Uso de herramientas como Certbot.
+- Renovación automática de certificados.
+
+### Seguridad adicional
+- Redirección de HTTP a HTTPS.
+- Políticas de seguridad HTTP (HSTS).
+- Uso de middlewares como helmet en Express.
+
+### Buenas prácticas en la administración de servidores HTTPS
+- Renovación y monitoreo de certificados.
+- No exponer archivos privados.
+- Control de logs sensibles.
+
 #### Bibliografía
 Documentación Oficial y Artículos
 | # | Tema | Fuentes |

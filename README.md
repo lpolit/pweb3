@@ -24,7 +24,7 @@ Conocer y saber implementar una variada gama de posibilidades para poner en prod
 
 | Fecha | Entregas |
 | -- | -- |
-| Mitad del Cuatri | **Entrega 1: *BE (JWT + RBAC + Buenas Practicas)* |
+| Mitad del Cuatri | **Entrega 1: BE (JWT + RBAC + Buenas Practicas[sanitizar - validar datos - registro de logs -  limite de peticiones])* |
 | Final del Cuatri | **Entrega 2: *BE (JWT + RBAC + Buenas Practicas) + FE + HTTPS + DEPLOY* |
 | Última Clase     | **Recuperatorios** y **Cierre** |
 

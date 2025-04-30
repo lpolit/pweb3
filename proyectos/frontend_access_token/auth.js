@@ -3,7 +3,6 @@
 //¿Qué hace este módulo?
 //Usa una variable privada accessToken para guardar el JWT.
 //Proporciona funciones para guardar, obtener y eliminar el token.
-//El token desaparece cuando el usuario recarga la página.
 
 const Auth = (() => {
   let accessToken = null; // Token almacenado en memoria
