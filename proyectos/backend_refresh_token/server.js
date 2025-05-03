@@ -13,7 +13,17 @@ let refreshTokens = [];
 
 
 app.use(express.json()); // Middleware para recibir JSON
-app.use(cors());
+
+const cors_options = {
+  origin: "http://localhost:8080",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  //allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true, // Solo si usás cookies o headers de autenticación
+};
+
+app.use(cors(cors_options));
+
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
   const umTitulo = "Estoy en la raiz del backend";
@@ -33,7 +43,7 @@ app.post("/login", (req, res) => {
   if (username === user.username && password === user.password) {
     // Generar Token
     const accessToken = jwt.sign({ id: user.id, username: user.username }, ACCESS_SECRET_KEY, {
-      expiresIn: "15m",
+      expiresIn: "1m",
     });
 
     const refreshToken = jwt.sign(user, REFRESH_SECRET_KEY);
@@ -43,9 +53,10 @@ app.post("/login", (req, res) => {
     // Enviar el Refresh Token en una cookie HTTP-only
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      //secure: true, // Solo en HTTPS en producción
-      sameSite: "Strict",
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 días
+      secure: false, // en desarrollo SIN HTTPS
+      sameSite: 'Lax', // porque frontend y backend están en localhost (diferente puerto)
+      //path: '/', // opcional, pero asegura que sea accesible globalmente
+      maxAge: 1000 * 60 * 60 * 24 * 7 // 7 días, por ejemplo
     });
 
     res.json({ accessToken:accessToken });
@@ -72,8 +83,9 @@ app.get("/profile", verifyToken, (req, res) => {
   res.json({ message: "Perfil autorizado", user: req.user });
 });
 
-app.get("/refresh-token", (req, res) => {
+app.post("/refresh-token", (req, res) => {
   const refreshToken = req.cookies.refreshToken;
+  console.log(`EL REFRESH_TOKEN QUE MANDA EL FRONT ES: ${refreshToken}`)
   if (!refreshToken) return res.status(401).json({ error: "No autorizado" });
 
   // Verificar si el refresh token es válido
@@ -103,8 +115,8 @@ app.post("/logout", (req, res) => {
   // Eliminar la cookie
   res.clearCookie("refreshToken", {
     httpOnly: true,
-    secure: true,
-    sameSite: "Strict",
+    secure: false,
+    sameSite: "Lax",
   });
 
   res.json({ message: "Sesión cerrada" });
