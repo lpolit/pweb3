@@ -37,8 +37,14 @@ https.createServer(options, app).listen(443, () => {
 ```
 
 ### Generar certificados autofirmados (para desarrollo)
-Comando con OpenSSL:
+#### INSTALAR OPENSSL
+https://slproweb.com/products/Win32OpenSSL.html
 
+Descargar el instalador
+Instalar todo siguiente
+En variables de entorno, agregar la ruta /bin de la instalacion al path.
+
+Comando con OpenSSL:
 ```bash
 openssl req -nodes -new -x509 -keyout key.pem -out cert.pem
 ```

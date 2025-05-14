@@ -20,6 +20,7 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
 
   const response = await fetch("http://localhost:3000/login", {
     method: "POST",
+    credentials: 'include', // Importante para que setee las cookies enviadas luego del login
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username: user, password: pass }),
   });

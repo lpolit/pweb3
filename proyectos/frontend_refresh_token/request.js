@@ -5,6 +5,7 @@ async function apiRequest(url, options = {}) {
   // Agregar el token al encabezado
   if (!options.headers) options.headers = {};
   const token = Auth.getToken();
+  console.log(`Invoncando con Token ${token}`);
   if (token) {
     options.headers['Authorization'] = `Bearer ${token}`;
   }
@@ -21,13 +22,12 @@ async function apiRequest(url, options = {}) {
       response = await fetch(url, options); // Reintentar la solicitud con el nuevo token
     } else {
       console.log('Sesión expirada, redirigiendo al login...');
-      window.location.href = '/login.html'; // Redirigir a la página de login si falla
+      //window.location.href = '/login.html'; // Redirigir a la página de login si falla
     }
   }
 
   return response.json();
 }
-
 
 
 export default apiRequest;

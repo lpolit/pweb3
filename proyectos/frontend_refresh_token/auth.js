@@ -12,7 +12,7 @@ const Auth = (() => {
     },
     async refreshToken() {
       try {
-        const response = await fetch('http://localhost:3000/api/refresh', {
+        const response = await fetch('http://localhost:3000/refresh-token', {
           method: 'POST',
           credentials: 'include', // Importante para enviar cookies HttpOnly
         });
