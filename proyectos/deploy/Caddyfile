@@ -1,0 +1,9 @@
+localhost {
+  reverse_proxy frontend:80
+  tls internal
+}
+
+localhost:3000 {
+  reverse_proxy backend:3000
+   tls internal
+}

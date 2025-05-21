@@ -1,0 +1,23 @@
+services:
+  frontend:
+    image: lpolitano-front:0.0.2
+    expose:
+    - "80"  # solo dentro de la red Docker
+
+  backend:
+    image: lpolitano-back:0.0.1
+    expose:
+    - "3000"
+    environment:
+      CORS_ORIGIN: "https://localhost:8080"
+
+  caddy:
+    image: caddy:alpine
+    ports:
+    - "8080:443"  # HTTPS
+    - "3000:3000"
+    volumes:
+    - ./Caddyfile:/etc/caddy/Caddyfile
+    depends_on:
+    - frontend
+    - backend
