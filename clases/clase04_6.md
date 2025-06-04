@@ -158,8 +158,6 @@ phases:
 ```
 
 
-
-
 ## K6
 
 ### INSTALACION
