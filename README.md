@@ -36,4 +36,4 @@ Conocer y saber implementar una variada gama de posibilidades para poner en prod
   * Un recuperatorio integrador, con nota >= 4
 
 * **Final (Alumnos Regulares)**
-  * Final, con nota >= 4 oral y/o escrito
+  * Final, con nota >= 4 escrito
