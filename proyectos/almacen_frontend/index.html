@@ -1,0 +1,42 @@
+<h1>Productos</h1>
+<button onclick="cargar()"> Mostrar productos</button>
+<ul id="lista"></ul>
+
+
+<h2> Agregar Producto</h2>
+<input id="descripcion">
+
+<button onclick="agregar()">Agregar producto</button>
+
+
+<script>
+function cargar(){
+    fetch("http://localhost:3001/productos")
+    .then(r=> r.json())
+    .then(data=>{
+        const  lista = document.getElementById("lista")
+
+        lista.innerHTML=""
+        
+        data.forEach(p => {
+            const li = document.createElement("li")
+            li.innerText = p.descripcion
+            lista.appendChild(li)
+        });
+    })
+}
+
+function agregar(){
+    const descripcion = document.getElementById("descripcion").value
+
+    fetch("http://localhost:3001/productos",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({descripcion})
+    })
+}
+
+
+</script>

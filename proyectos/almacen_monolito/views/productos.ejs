@@ -1,0 +1,14 @@
+<h1> Productos</h1>
+
+<ul>
+    <% productos.forEach( p=> { %>
+    <li> <%= p.descripcion %></li>
+    <%})%>
+</ul>
+
+<h2> Agregar Productos</h2>
+
+<form method="POST" action="/agregar">
+    <input name="descripcion">
+    <button> Agregar </button>
+</form>
