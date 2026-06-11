@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XSS Test</title>
+</head>
+<body>
+    <input type="text" id="userInput" placeholder="Escribe algo">
+    <button onclick="submitComment()">Enviar</button>
+    <div id="output"></div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.8/purify.min.js"></script>
+
+    <script>
+        function submitComment() {
+            const input = document.getElementById("userInput").value;
+            const input_sanitizado = DOMPurify.sanitize(input)
+            // Vulnerable, ejecutar javascript
+            //document.getElementById("output").innerHTML = "Comentario: " + input // Vulnerable a XSS insertando <img src="x" onerror="alert('XSS funcionando!')">
+            // sanitizado
+            document.getElementById("output").innerHTML = "Comentario: " + input_sanitizado; 
+            //Inserta solo texto
+            //document.getElementById("output").textContent = "Comentario: " + input_sanitizado; // Vulnerable a XSS insertando <img src="x" onerror="alert('XSS funcionando!')">
+        }
+    </script>
+</body>
+</html>

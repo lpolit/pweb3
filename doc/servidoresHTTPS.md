@@ -46,7 +46,7 @@ En variables de entorno, agregar la ruta /bin de la instalacion al path.
 
 Comando con OpenSSL:
 ```bash
-openssl req -nodes -new -x509 -keyout key.pem -out cert.pem
+openssl req -x509 -newkey rsa:2048 -nodes -keyout server.key -out server.crt -days 365
 ```
 - Explicación de cada parámetro.
 - Ubicación segura de los certificados.

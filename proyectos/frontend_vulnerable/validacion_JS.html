@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación de Formulario con JavaScript</title>
+</head>
+<body>
+
+    <h1>Formulario de Registro</h1>
+    <form id="registrationForm">
+        <label for="username">Nombre de usuario:</label>
+        <input type="text" id="username" name="username" placeholder="Min. 5 caracteres" /><br><br>
+
+        <label for="email">Correo electrónico:</label>
+        <input type="text" id="email" name="email" placeholder="ejemplo@dominio.com" /><br><br>
+
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" placeholder="Min. 8 caracteres" /><br><br>
+
+        <label for="confirmPassword">Confirmar contraseña:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirmar contraseña" /><br><br>
+
+        <button type="submit">Registrar</button>
+    </form>
+
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            let isValid = true;
+
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            // Validar nombre de usuario (mínimo 5 caracteres)
+            if (username.length < 5) {
+                alert("El nombre de usuario debe tener al menos 5 caracteres.");
+                isValid = false;
+            }
+
+            // Validar correo electrónico
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(email)) {
+                alert("Por favor ingresa un correo electrónico válido.");
+                isValid = false;
+            }
+
+            // Validar contraseñas
+            if (password.length < 8) {
+                alert("La contraseña debe tener al menos 8 caracteres.");
+                isValid = false;
+            }
+
+            if (password !== confirmPassword) {
+                alert("Las contraseñas no coinciden.");
+                isValid = false;
+            }
+
+            // Si no es válido, prevenir el envío del formulario
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+## Explicación del código:
+#### Validación Manual:
+
+Se valida el nombre de usuario (mínimo 5 caracteres).
+
+Se usa una expresión regular para validar el correo electrónico.
+
+Se valida que las contraseñas coincidan y tengan al menos 8 caracteres.
+
+#### Prevención de Envío:
+
+Si algún campo no es válido, se muestra un mensaje de alerta y se previene el envío del formulario usando event.preventDefault().

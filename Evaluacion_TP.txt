@@ -1,0 +1,18 @@
+### EVALUACION WEB 3 ####
+
+1. Mostrame el flujo completo
+
+Estructura del proyecto
+Middleware
+Generación de JWT
+Validación
+Manejo de errores
+
+2. Cambios en vivo
+
+Expiracion JWT
+Agrega un rol en un endpoint
+
+
+3. ¿Qué parte de este código te costó más y por qué?
+

@@ -1,0 +1,13 @@
+services:
+
+  backend:
+    image: mi_back
+    ports:
+      - "3001:3001"
+  
+  frontend:
+    image: mi_front
+    ports:
+      - "8080:80"
+
+
